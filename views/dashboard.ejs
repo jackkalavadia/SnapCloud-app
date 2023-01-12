@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand " href="#">Welcome to SnapCloud! </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Hello, <%=user.name %> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+      <span class="navbar-text">
+        <a href="/users/logout" >Sign Out</a>
+      </span>
+    </div>
+  </nav>
+  <br/><br/>
+  <% include ./partials/messages %>
+  <br />
+  <%= typeof msg != 'undefined' ? msg : '' %>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="file-field input-field">
+        <div class="btn black">
+          <span>Choose a file</span>
+          <input name="myImage" type="file">
+        </div>
+        <input type="hidden" name=user value=<%=user.name %>>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <button type="submit" class="btn-primary btn-lg black" >UPLOAD!</button>
+    </form>
+    <br/><br/>
+    <br/><br/> 
+    <h4>Home Directory</h4>
+    <table>
+      <thead>
+        <tr>
+            <th>User</th>
+            <th>File Name</th>
+            <th>Time Stamp</th>
+            <th>View File</th>
+            
+        </tr>
+      </thead>
+
+      <tbody>
+          <% data.forEach(function (data) { %>
+            <form action="/delete" method="POST">
+            <tr name='row'>
+                    <td name='user'><%= data.user %></td>
+                    <td name='fileName'><%= data.fileName %></td>
+                    <td name='uploadTime'><%= data.uploadTime %></td>
+                    <td name='fileUrl'><a href='<%= data.fileUrl %>'>View </a></td>
+                    <td><button class='btn-primary btn-lg black' name=<%= data.fileUrl %>>Delete</button></td>
+              </tr>
+            </form>
+
+        <% }) %>
+        
+      </tbody>
+    </table>
+
+    <br/><br/>
+    <br/><br/> 
+    <%if (logins.length > 0) { %>
+      <h4><u>User Details</u></h4>
+    <table>
+        <thead>
+          <tr>
+              <th>User Name</th>
+              <th>Email</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+            <% logins.forEach(function (logins) { %>
+              <tr>
+                  <td><%=logins.name %></td>
+                  <td><%=logins.email %></td>
+              </tr>
+          <% }) %>
+          
+        </tbody>
+      </table>
+
+      <br/><br/>
+    <br/><br/> 
+      <% } %>

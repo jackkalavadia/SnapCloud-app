@@ -1,0 +1,40 @@
+{
+  "name": "Project1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-s3": "^2.0.5",
+    "aws-sdk": "^2.554.0",
+    "bcryptjs": "^2.4.3",
+    "busboy": "^0.3.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.6",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-facebook-token": "^3.3.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
